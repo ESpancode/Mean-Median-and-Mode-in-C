@@ -1,32 +1,91 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+Mean
 
-# Precompiled Headers
-*.gch
-*.pch
+# include <stdio.h>
+int main()
+{
+int array[]={13,36,16,21,24,16,21,10,18,16};
+int sum=0;
+int size;
+int j;
+int mean=0;
+size=sizeof(array)/sizeof(int);
+for(j=0;j<size;j++)
+{
+sum=sum+array[j];
+}
+mean=sum/size;
+printf("the mean is %d", sum);
+}
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+Median
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# include <stdio.h>
+int main(){
+int array[]={13,36,16,21,24,16,21,10,18,16};
+int size;
+int y;
+int x;
+int n= sizeof(array)/sizeof(int);
+int temp=0;
+int median=0;
+for (x=0; x<n; x++)
+{
+for(y=0; y<n-1; y++)
+{
+if(array[y]>array[y+1])
+{
+temp=array[y+1];
+array[y+1]=array[y];
+array[y]=temp;
+}
+}
+}
+median=(array[4]+array[5])/2;
+printf("test: %d\n", median);
+return 0;
+}
 
-# Debug files
-*.dSYM/
+
+Mode
+
+# include <stdio.h>
+int main(){
+int array[]={13,36,16,21,24,16,21,10,18,16};
+int size;
+int y;
+int x;
+int n= sizeof(array)/sizeof(int);
+int temp=0;
+int mode=0;
+int count[10];
+int highest=1;
+for (x=0; x<n; x++)
+{
+for(y=0; y<n-1; y++)
+{
+if(array[y]>array[y+1])
+{
+temp=array[y+1];
+array[y+1]=array[y];
+array[y]=temp;
+}
+}
+}
+for(x=0;x<n;x++)
+{
+count[x]=1;
+for(y=x+1;y<n;y++)
+{
+if(array[x]==array[y])
+{count[x]=count[x]+1;}
+}
+if(count[x]>highest)
+{
+highest=count[x];
+mode=array[x];
+}
+}
+printf("mode is %d\n", mode);
+return 0;
+}
